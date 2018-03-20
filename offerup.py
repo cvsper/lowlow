@@ -102,7 +102,7 @@ def update():
 def main():
 	prox = {'http': proxy.main()}
 	www = 'https://offerup.com/search/?q=iphone#offers'
-	r = requests.get(www, proxies=prox)
+	r = requests.get(www)
 	soup = BS(r.content, 'lxml')
 	item = soup.find_all('div', {'class' : 'item-pic'})
 	
