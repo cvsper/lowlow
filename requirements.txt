@@ -6,3 +6,4 @@ Flask-RESTful==0.3.6
 gunicorn==19.7.1
 twilio==6.5.1
 proxy
+lxml==3.8.0
