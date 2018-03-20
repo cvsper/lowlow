@@ -1,0 +1,1 @@
+web: gunicorn lowlow:app --log-file=-
