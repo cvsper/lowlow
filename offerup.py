@@ -41,7 +41,7 @@ def update():
 		time.sleep(random.randint(1,15))
 	
 		if new_url != check():
-			print 'new update!'
+			print('new update!')
 		else:
 			www = new_url
 			r = requests.get(www, proxies=prox)
@@ -76,7 +76,7 @@ def update():
 			for z in item_desc:
 				title = z.find_all('h1')
 				for t in title:
-					print t.text
+					print(t.text)
 ##### Price Check #######
 					www = 'http://www.thepricegeek.com/results/' + t.text + '?country=us'
 					r = requests.get(www, proxies=prox)
@@ -110,7 +110,7 @@ def main():
 	for x in item:
 		a = x.find_all('a')
 		for y in a:
-			print 'Current iphone listing: ' + y.get('href')
+			print('Current iphone listing: ' + y.get('href'))
 			www = y.get('href')
 			r = requests.get(www)
 			soup = BS(r.content, 'lxml')
@@ -124,7 +124,7 @@ def main():
 			item_dict['url'] = y.get('href')
 	
 			for z in item_price:
-				print 'Current listing price $: ' + z.text
+				print('Current listing price $: ' + z.text)
 				item_dict['price'] = z.text
 	
 				for z in item_desc:
@@ -133,18 +133,18 @@ def main():
 					item_time = z.find_all('div', {'class' : 'pad-less-top color-text'})
 	
 				for item in item_loc:
-					print 'Current listing location: ' + item.text
+					print('Current listing location: ' + item.text)
 					item_dict['location'] = item.text
 	
 				for title in item_title:
-					print 'Current listing title: ' + title.text
+					print('Current listing title: ' + title.text)
 					item_dict['title'] = title.text
 					www = 'http://www.thepricegeek.com/results/' + title.text + '?country=us'
 					r = requests.get(www)
 					soup = BS(r.content, 'lxml')
 					item = soup.find_all('em', {'class' : 'median'})
 					for mean in item:
-						print "Current listing selling price: " + mean.text.replace('  ', '')
+						print("Current listing selling price: " + mean.text.replace('  ', ''))
 						item_dict['sell_average'] = mean.text.replace('  ', '')
 
 ##### Price Check ######
@@ -153,19 +153,19 @@ def main():
 					soup = BS(r.content, 'lxml')
 					item = soup.find_all('span', {'class' : 'complavgprice'})
 					for mean in item:
-						print "Current listing selling price: " + mean.text.replace('  ', '')
+						print("Current listing selling price: " + mean.text.replace('  ', ''))
 						item_dict['sell_average'] = mean.text.replace('  ', '')
 ##### Price Check ######	
 	
 				for time in item_time:
-					print "Current listing post time: "	+ time.text.replace('  ', '')
+					print("Current listing post time: "	+ time.text.replace('  ', ''))
 					item_dict['post_time'] = time.text.replace('  ', '')
 	
 	
 			for z in item_desc2:
 				item_description = z.find_all('div', {"class" : 'pad-less-top-bottom'})
 				for desc in item_description:
-					print "Current item description: " + desc.text + "\n" + "\n"
+					print("Current item description: " + desc.text + "\n" + "\n")
 					item_dict['item_desc'] = desc.text
 	
 	######################		GET OFFERUP DATA END	###################################
