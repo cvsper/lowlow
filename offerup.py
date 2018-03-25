@@ -196,7 +196,7 @@ def main():
 		#else:
 		#	pass
 
-		return str(item_dict)
+		return str(item_dict).encode('utf-8')
 
 	########### STAR CONFIG END #####
 
